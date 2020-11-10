@@ -1,35 +1,38 @@
 #CREATING CLASS EMPLOYEE
-
 public class employee {
+    public static final int noOfDayInMonth=20;
     public static final int empWagePerHr=20;
-    public static final int is_Part_Time=2;
-    public static final int is_Full_Time=1;
+    public static final int is_Part_Time=1;
+    public static final int is_Full_Time=2;
 
-    public static void main(String arg[]){
+    public static void main(String arg[]) {
 
         System.out.println("WELCOME TO EMPLOYEE WAGE COMPUTATION");
+	int absent=0;
+        int empHrs = 0;
+        int empWage = 0;
+        int empWageForMonth=0;
 
-        int empHrs=0;
-        int empWage=0;
+        for ( int day = 1; day <= noOfDayInMonth; day++ ) {
 
-        int employee=(int)(( Math.random()*10)%3);
-        
-#SOLVING SWITCH STATEMENTS
+            int employee = (int) ((Math.random() * 10) % 3);
 
-        switch(employee){
-            case is_Part_Time:
-                System.out.println("Part Time  ");
-                empHrs = 4;
-                break;
-            case is_Full_Time:
-                System.out.println("Full Time ");
-                empHrs = 8;
-                break;
-            default:
-                System.out.println("Employee is Absent ");
-                empHrs = 0;
+            switch (employee) {
+                case is_Part_Time:
+                    empHrs = 4;
+                    break;
+                case is_Full_Time:
+                    empHrs = 8;
+                    break;
+                default:
+                    absent=absent+1;
+                    empHrs = 0;
+            }
+#CLACULATING WAGES PER MONTH
+            empWage = (empHrs * empWagePerHr);
+            empWageForMonth = (empWageForMonth+empWage);
         }
-            empWage=(empHrs*empWagePerHr);
-            System.out.println("Employee Wage is "+empWage);
+	System.out.println("Employee was absent for "+absent+" days");
+        System.out.println("Employee Wage of Month is : " + empWageForMonth);
     }
 }
