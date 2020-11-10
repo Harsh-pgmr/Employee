@@ -1,17 +1,26 @@
-import java. util.Random;
-class employee{
-public static void main(String[] args){
-        System.out.println("WELCOME TO EMPLOYEE WAGE PROBLEM");
-        Random rand = new Random();
-        int r = rand.nextInt(2);
-        if (r==0){
-        System.out.println("Employee is Present");
-}
-        else {
-        System.out.println("Employee is Absent");
-}
+public class employee {
+    public static void main(String arg[]){
+        System.out.println("WELCOME to EMPLOYEE WAGE Computation");
+        int empRatePerHr=20;
+        int empHrs=0;
+        int empWage=0;
+        double employee=Math.random();
+        if(employee==1)
+        {
+            System.out.println("Employee is Present");
+            empHrs=8;
+            empWage=(empHrs*empRatePerHr);
+            System.out.println("Daily Wage is "+empWage);
+        }
+        else
+        {
+            System.out.println("Employee is Absent");
+            empHrs=0;
+            empWage=(empHrs*empRatePerHr);
+            System.out.println("Daily Wage is "+empWage);
+                        }
+    }
 }
 
 
-}
 
