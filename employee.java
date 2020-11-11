@@ -1,41 +1,35 @@
-#CREATING CLASS EMPLOYEE
-  
-public class employee {
-    public static final int maxHrsInMonth=100;
-    public static final int noOfWorkDay=20;
-    public static final int empWagePerHr=20;
-    public static final int is_Part_Time=1;
-    public static final int is_Full_Time=2;
+#IMORT JAVA RANDOM PACKAGES
+import java.util.Random;
+public class emp {#CERATING CLASS EMP
+    
+    public static final int absent=0;
+    public static final int is_Part_Time=80;
+    public static final int is_Full_Time=16;
 
-    public static void main(String arg[]) {
-
-        System.out.println("WELCOME TO EMPLOYEE WAGE COMPUTATION");
-
-        int empHrs = 0;
-        int totalEmpHrs = 0;
-        int totalWorkDay=0;
-        int totalEmpWage=0;
-
-        while( totalWorkDay < noOfWorkDay && totalEmpHrs <= maxHrsInMonth ) {
-
-            int employee = (int) ((Math.random() * 10) % 3);
-
-            switch (employee) {
-                case is_Part_Time:
-                    empHrs = 4;
-                    break;
-                case is_Full_Time:
-                    empHrs = 8;
-                    break;
-                default:
-                    empHrs = 0;
-            }
-            totalWorkDay++;
-            totalEmpHrs = totalEmpHrs + empHrs;
-            }
-    totalEmpWage = ( totalEmpHrs * empWagePerHr );
-    System.out.println("Employee days:" + totalWorkDay+" Days");
-    System.out.println("Hours Worked: "+totalEmpHrs+" hrs");
-    System.out.println("Employee Total Salary is :"+ totalEmpWage+" Rs");
+    public void calculate_wage(){
+      int sum=0;
+      System.out.println("Day\tWage\tSum");
+      for(int i=1;i<=20;i++){
+      int employee = (int) ((Math.random() * 10) % 3);
+      switch(employee){
+       case 1:
+          sum=sum+is_Full_Time;
+          System.out.println(i+"\t"+is_Full_Time+"\t"+sum);
+          break;
+       case 2 :
+          sum=sum+is_Part_Time;
+          System.out.println(i+"\t"+is_Part_Time+"\t"+sum);
+          break;
+          case 0 :
+          sum=sum+absent;
+          System.out.println(i+"\t"+absent+"\t"+sum);
+      }
     }
+  }
+  
+  public static void main(String[] args) {
+    System.out.println("WELCOME TO EMPLOYEE WAGE COMPUTATION PROGRAM");
+    EmpWage obj = new EmpWage();
+    obj.calculate_wage();
+  }
 }
