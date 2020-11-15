@@ -1,26 +1,27 @@
-package companyEmployeeWage;
 import java.util.*;
-public class employee
+public class employee implements iEmployeeWage
 {
 	int counter=0;
 	int numberOfCompanies;
-	companyEmployeeWage[] companyEmployeeWageArray;
-	EmpWage(int n)
+	ArrayList<companyEmployeeWage> companyEmployeeWageList;
+	employeeWage(int n)
 	{
 		this.numberOfCompanies=n;
-		companyEmployeeWageArray=new companyEmployeeWage[numberOfCompanies];
+		companyEmployeeWageList=new ArrayList<companyEmployeeWage>();
 	}
-	public void addCompany(String company,int ratePerHour,int days,int maxHours)
+	public void addCompany(String company,int wagePerHour,int days,int maxHours)
 	{
-		companyEmployeeWageArray[counter++]=new companyEmployeeWage(company,ratePerHour,days,maxHours);
+		companyEmployeeWage companyempwage=new companyEmployeeWage(company,wagePerHour,days,maxHours);
+		companyEmployeeWageList.add(companyempwage);
 	}
 	public void computeWages()
 	{
-		for(int i=0;i<numberOfCompanies;i++)
+		for(int i=0;i<companyEmployeeWageList.size();i++)
 		{
-			companyEmployeeWageArray[i].setTotalWage(this.employeeWages(companyEmployeeWageArray[i]));
-			System.out.println(companyEmployeeWageArray[i]);
-			System.out.println("---------------------------------------");
+			companyEmployeeWage companyempwage=companyEmployeeWageList.get(i);
+			companyempwage.setTotalWage(this.employeeWages(companyempwage));
+			System.out.println(companyempwage);
+			System.out.println("----------------------------");
 		}
 	}
     public int getWorkingHours(int check)
@@ -59,10 +60,8 @@ public class employee
             check=attendanceCheck();
             workHours=getWorkingHours(check);
             totalHours=totalHours+workHours;
-            dailySalary=workHours*wagePerHour;
-            totalSalary=totalHours*ratePerHour;
-            dailySalary=workHours*companyEmployee.ratePerHour;
-            totalSalary=totalHours*companyEmployee.ratePerHour;
+            dailySalary=workHours*companyEmployee.wagePerHour;
+            totalSalary=totalHours*companyEmployee.wagePerHour;
             print(totalDays,workHours,totalHours,dailySalary,totalSalary);
         }
         return totalSalary;
@@ -71,7 +70,7 @@ public class employee
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter no.of companies:");
 		int n=sc.nextInt();
-		EmpWage employeeWageArray=new EmpWage(n);
+		iEmployeeWage employeeWageList=new employeeWage(n);
 		for(int counter=1;counter<=n;counter++)
 		{
 			System.out.println("Enter name of company:");
@@ -82,8 +81,8 @@ public class employee
 			int days=sc.nextInt();
 			System.out.println("Enter maximum working hours:");
 			int maxHours=sc.nextInt();
-			employeeWageArray.addCompany(company,ratePerHour,days,maxHours);
+			employeeWageList.addCompany(company,ratePerHour,days,maxHours);
 		}
-		employeeWageArray.computeWages();
+		employeeWageList.computeWages();
 	}
 }
