@@ -1,5 +1,5 @@
 import java.util.*;
-public class employee implements iEmployeeWage
+public class employeeWage implements iEmployeeWage
 {
 	int counter=0;
 	int numberOfCompanies;
@@ -75,7 +75,7 @@ public class employee implements iEmployeeWage
 		{
 			System.out.println("Enter name of company:");
 			String company=sc.next();
-			System.out.println("Enter wage per hour:");
+			System.out.println("Enter rate per hour:");
 			int wagePerHour=sc.nextInt();
 			System.out.println("Enter number of working days:");
 			int days=sc.nextInt();
